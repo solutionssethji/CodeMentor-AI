@@ -208,7 +208,10 @@ export default function LoginPage() {
 
       <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-100 mb-2">CodeMentor AI</h1>
+          <h1 className="flex justify-center items-center gap-3 text-3xl font-bold text-slate-100 mb-2">
+            <img src="/logo.png" alt="CodeMentorAI Logo" className="h-10 w-auto" />
+            CodeMentor AI
+          </h1>
           <p className="text-slate-400">
             {isLogin ? 'Welcome back! Sign in to continue.' : 'Create an account to track your progress.'}
           </p>

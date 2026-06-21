@@ -42,7 +42,7 @@ export default function Home() {
 
   useEffect(() => {
     const configRef = doc(db, 'system', 'landing_page');
-    
+
     getDoc(configRef).then(snap => {
       if (!snap.exists()) {
         setDoc(configRef, config).catch(e => console.error("Failed to seed landing page config", e));
@@ -62,13 +62,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans">
       <header className="flex items-center justify-between p-6 border-b border-slate-800">
-        <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">
+        <h1 className="flex items-center gap-3 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">
+          <img src="/logo.png" alt="CodeMentorAI Logo" className="h-8 w-auto" />
           CodeMentor AI
         </h1>
         <nav className="flex items-center space-x-6">
           <Link href="/courses" className="hover:text-cyan-400 transition">Courses</Link>
           <Link href="/pricing" className="hover:text-cyan-400 transition">Pricing</Link>
-          
+
           {!loading && user ? (
             <div className="flex items-center gap-4 border-l border-slate-800 pl-6">
               <Link href="/dashboard" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-md font-medium transition">
