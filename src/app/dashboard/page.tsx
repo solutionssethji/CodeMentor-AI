@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { MessageSquare } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { useData } from "@/providers/DataProvider";
+import HelpModal from "@/components/HelpModal";
 
 
 interface FormattedActiveCourse {
@@ -34,6 +36,7 @@ interface DashboardData {
 
 export default function DashboardHome() {
   const [data, setData] = useState<DashboardData | null>(null);
+  const [showHelpModal, setShowHelpModal] = useState(false);
   const { userData, globalCourses, loading: dataLoading } = useData();
   const { user } = useAuth();
   
@@ -230,10 +233,25 @@ export default function DashboardHome() {
 
   return (
     <div className="p-8">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
         <h2 className="text-3xl font-bold text-slate-100">
           Welcome back, {userData?.displayName ? userData.displayName.split(' ')[0] : (userData?.firstName ? userData.firstName : (user?.displayName ? user.displayName.split(' ')[0] : 'Developer'))}!
         </h2>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/dashboard/ai-workspace"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition-all"
+          >
+            Open Chat
+          </Link>
+          <button
+            onClick={() => setShowHelpModal(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-indigo-600/20 border border-slate-700 hover:border-indigo-500 text-slate-300 hover:text-indigo-400 font-semibold rounded-lg transition-all"
+          >
+            <MessageSquare size={18} />
+            Help & Support
+          </button>
+        </div>
       </div>
       
       {/* Stats Grid */}
@@ -318,6 +336,9 @@ export default function DashboardHome() {
           )}
         </div>
       </div>
+
+      {/* Help Modal */}
+      <HelpModal isOpen={showHelpModal} onClose={() => setShowHelpModal(false)} />
     </div>
   );
 }

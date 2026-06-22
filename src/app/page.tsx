@@ -138,6 +138,22 @@ export default function Home() {
           );
         })}
       </section>
+
+      {/* Footer */}
+      <footer className="text-center py-8 text-sm text-slate-500 border-t border-slate-800 mt-10">
+        <div className="mb-4">
+          <Link href="/privacy" className="hover:text-indigo-400 transition mx-3">Privacy Policy</Link>
+          <span className="text-slate-700">|</span>
+          <Link href="/terms" className="hover:text-indigo-400 transition mx-3">Terms & Conditions</Link>
+        </div>
+        <p>
+          &copy; {new Date().getFullYear()} Secured by{" "}
+          <a href="https://sethji-solutions.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 transition">
+            Sethji Solutions Private Limited
+          </a>
+          . All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }

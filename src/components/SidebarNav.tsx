@@ -22,6 +22,7 @@ export function SidebarNav() {
     { href: "/dashboard/interviews", label: "Mock Interviews" },
     { href: "/dashboard/profile", label: "Profile" },
     { href: "/dashboard/billing", label: "Package & Billing" },
+    { href: "/dashboard/help", label: "Help & Support" },
   ];
 
   return (

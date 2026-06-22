@@ -6,6 +6,7 @@ import { Clock, AlertTriangle } from 'lucide-react';
 import { Eye, EyeOff } from 'lucide-react';
 import { auth, db } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -369,6 +370,22 @@ export default function LoginPage() {
         </div>
       </div>
       )}
+
+      {/* Global Footer */}
+      <div className="mt-auto pt-8 w-full text-center">
+        <div className="mb-4 text-sm">
+          <Link href="/privacy" className="text-slate-500 hover:text-indigo-400 transition mx-3">Privacy Policy</Link>
+          <span className="text-slate-700">|</span>
+          <Link href="/terms" className="text-slate-500 hover:text-indigo-400 transition mx-3">Terms & Conditions</Link>
+        </div>
+        <p className="text-sm text-slate-500">
+          &copy; {new Date().getFullYear()} Secured by{" "}
+          <a href="https://sethji-solutions.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 transition">
+            Sethji Solutions Private Limited
+          </a>
+          . All rights reserved.
+        </p>
+      </div>
     </div>
   );
 }
